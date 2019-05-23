@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <title>Travel!</title>
+    <link rel="icon" href="{{ url_for('static', filename='sand-favicon.png') }}">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid" id="page-container">
+        <div class="row bg"></div>
+        <div class="row" id="contents">
+            <div class="col-md-4">
+                <div class="row container-fluid">
+                    <h2>Travel Recommender</h2>
+                    <p>You want to travel? But you can't decide where? Don't worry. Just type in your ideal vacation
+                        to
+                        the left and we will decide for you!</p>
+                </div>
+                <div class="input-items">
+                    <div class="form-group">
+                        <label for="description">Your Ideal Vacation:</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button id="submit" class="btn btn-primary">Go!</button>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row container" style="display: none" id="result_div">
+                    <div class="col-md-8">
+                        <div class="row container hotel-titles">
+                            <h1 id="hotel_0"></h1>
+                        </div>
+                        <div class="row container">
+                            <div class="talk-bubble tri-right border round top-left-in">
+                                <div class="talktext" id="review_0">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row hotel-titles">
+                            <h1 id="hotel_1"></h1>
+                        </div>
+                        <div class="row hotel-titles">
+                            <div class="talk-bubble tri-right border round top-left-in">
+                                <div class="talktext" id="review_1">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h1 id="hotel_2"></h1>
+                        </div>
+                        <div class="row">
+                            <div class="talk-bubble tri-right border round top-left-in">
+                                <div class="talktext" id="review_2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <div class="container-fluid bg-info">
+                <div class="row">
+                    <div class="col-md-12 py-5">
+                        <div class="flex-center">
+                            <a class="twitter">
+                                <a id="twitter" href="https://www.twitter.com/ysjeongg">
+                                    <i class="fab fa-twitter fa-lg mr-md-5 mr-3 fa-2x"> </i></a>
+                            </a>
+                            <a class="linkedin">
+                                <a id="linkedin" href="https://linkedin.com/in/youngsjeong">
+                                    <i class="fab fa-linkedin-in fa-lg mr-md-5 mr-3 fa-2x"> </i></a>
+                            </a>
+                            <a class="instagram">
+                                <a id="instagram" href="https://www.instagram.com/y0ungjeong/"> <i
+                                        class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"> </i></a>
+                            </a>
+                            <a class="github">
+                                <a id="github" href="https://github.com/youngjeong46">
+                                    <i class="fab fa-github fa-lg mr-md-5 mr-3 fa-2x"> </i></a>
+                            </a>
+                            <a class="blog">
+                                <a id="blog" href="https://datatostories.com">
+                                    <i class="fas fa-blog fa-lg fa-2x"></i></a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright text-center py-3">© This is created by Young Jeong
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script>
+    $('#submit').click(() => { send_data(); });
+</script>
+
+</html>
