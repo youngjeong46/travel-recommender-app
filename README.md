@@ -5,10 +5,7 @@
 
 ![alt="screenshot"]()
 
-This is a source code for the flask app I created. The app receives user info about a listing, or a potential listing, on AirBnB, and
-predicts the probability of it receiving a 5-star ratings on AirBnB. The app will also suggest one amenity addition that will give the biggest probability boost. 
-You can see the application in action [here]().
+This is a source code for the flask app I created. The app recommends a hotel based on the traveler's description of their ideal vacation. You can see the application in action [here]().
 
-This is based on a classification project I did on predicting whether an AirBnB listing in Seattle will receive a 5-star ratings or not. The github repo for the project
-is [here](https://github.com/youngjeong46/vacation-recommender), and the blog post on the project can be found [here]("").
+This is based on a Natural Language Processing project I did on about 90000 TripAdvisor Hotel reviews of various vacations destinations. The github repo for the project is [here](https://github.com/youngjeong46/travel-recommender), and the blog post on the project can be found [here]("").
 
