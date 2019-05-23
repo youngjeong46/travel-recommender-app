@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template, jsonify, request, abort
 from travel_recommender_api import suggest
 
-# app = Flask(__name__)
-app = Flask('TravelRecommenderApp')
+app = Flask(__name__)
+# app = Flask('TravelRecommenderApp')
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -18,6 +18,5 @@ def make_prediction():
         return render_template("layout.html")
 
 
-# if __name__ == "main":
-#     app.run(debug=False)
-app.run(debug=True)
+if __name__ == "main":
+    app.run(debug=False)
