@@ -41,10 +41,9 @@
                         <div class="container">
                             <img id="citypic" style='height: 100%; width: 100%; object-fit: contain' />
                         </div>
-                        <div class=" row container hotel-titles">
+                        <div class="row container hotel-titles">
                             <h1>
-                                <span class="unarticulated"><b>#1 Suggestion: </b></span></h1>
-                            </h1>
+                                <span class="unarticulated"><b>#1 Suggestion: </b></span></h1><br>
                             <h1 id="city_0"></h1>
                             <h3 id="hotel_0">
                             </h3>
@@ -61,7 +60,7 @@
 
                     </div>
                     <div class="col-md-4">
-                        <h2>Other suggestions: </h2>
+                        <h2><span class="unarticulated"><b>Other Suggestions:</b></span></h2>
                         <div class="row hotel-titles">
                             <h3 id="city_1">
                             </h3>
@@ -157,10 +156,21 @@
             data: JSON.stringify(features),
             success: (result) => {
                 for (x in result) {
-                    $('#city_' + x).html(result[x]['city'])
-                    $('#citypic').attr("src", pic_dict[result[x]['city']])
-                    $('#hotel_' + x).html("Suggested Hotel: " + result[x]['hotel']);
-                    $('#review_' + x).html(quote_icon + result[x]['review']);
+                    let city = result[x]['city']
+                    let hotel = result[x]['hotel']
+                    let review = result[x]['review']
+                    let truncated = ""
+                    $('#city_' + x).html(city);
+                    if (x == 0) {
+                        $('#citypic').attr("src", pic_dict[city]);
+                    }
+                    $('#hotel_' + x).html("Suggested Hotel: " + hotel);
+                    if (review.length > 250) {
+                        truncated += review.substr(0, 247) + '...';
+                    } else {
+                        truncated = review;
+                    }
+                    $('#review_' + x).html(quote_icon + truncated);
                     $('#tripadvisor_' + x).html(review_script);
                 }
                 $('#result_div').show();
