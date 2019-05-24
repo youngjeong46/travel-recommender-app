@@ -38,10 +38,20 @@
             <div class="col-md-8">
                 <div class="row container" style="display: none" id="result_div">
                     <div class="col-md-8">
-                        <div class="row container hotel-titles">
-                            <h1 id="hotel_0"></h1>
+                        <div class="container">
+                            <img id="citypic" style='height: 100%; width: 100%; object-fit: contain' />
                         </div>
-                        <div class="row container">
+                        <div class=" row container hotel-titles">
+                            <h1>
+                                <span class="unarticulated"><b>#1 Suggestion: </b></span></h1>
+                            </h1>
+                            <h1 id="city_0"></h1>
+                            <h3 id="hotel_0">
+                            </h3>
+                            <br>
+                            <p id="tripadvisor_0"></p>
+                        </div>
+                        <div class="row container hotel-reviews">
                             <div class="talk-bubble tri-right border round top-left-in">
                                 <div class="talktext" id="review_0">
 
@@ -51,20 +61,31 @@
 
                     </div>
                     <div class="col-md-4">
+                        <h2>Other suggestions: </h2>
                         <div class="row hotel-titles">
-                            <h1 id="hotel_1"></h1>
+                            <h3 id="city_1">
+                            </h3>
+                            <h5 id="hotel_1">
+                            </h5>
+                            <br>
+                            <p id="tripadvisor_1"></p>
                         </div>
-                        <div class="row hotel-titles">
+                        <div class="row hotel-reviews">
                             <div class="talk-bubble tri-right border round top-left-in">
                                 <div class="talktext" id="review_1">
 
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <h1 id="hotel_2"></h1>
+                        <div class="row hotel-titles">
+                            <h3 id="city_2">
+                            </h3>
+                            <h5 id="hotel_2">
+                            </h5>
+                            <br>
+                            <p id="tripadvisor_2"></p>
                         </div>
-                        <div class="row">
+                        <div class="row hotel-reviews">
                             <div class="talk-bubble tri-right border round top-left-in">
                                 <div class="talktext" id="review_2">
 
@@ -116,6 +137,17 @@
     function send_data() {
         let features = $('#description').val()
         let quote_icon = "<i class='fas fa-quote-left fa-2x fa-pull-left'></i>"
+        let review_script = "Here's what one guest said: "
+        let pic_dict = {
+            "Playa Del Carmen": "https://cdn.aarp.net/content/dam/aarp/travel/international/2019/04/1140-playa-del-carmen-beach.imgcache.rev01b134dcd46ff59d439cea8c82e11a55.jpg",
+            "Aspen": "http://okl.scene7.com/is/image/OKL/122616_Aspen_Lead2?wid=1000&op_sharpen=1",
+            "Boracay": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-483535221_super.jpg?sharp=10&vib=20&w=1200",
+            "Whistler": "https://cdn.whistler.com/s3/images/og/whistler-village-winter.jpg",
+            "Gran Canaria": "https://www.luxair.lu/sites/default/files/styles/slide_images/public/2019-03/LG_Las-Palmas-de-Gran-Canaria_web_0.jpg?itok=UsboCyRb",
+            "Vienna": "https://lonelyplanetimages.imgix.net/mastheads/stock-photo-st-stephens-church-112868985.jpg?sharp=10&vib=20&w=1200",
+            "Budapest": "https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5515999951001_5214933106001-vs.jpg?pubId=5104226627001&videoId=5214933106001",
+            "Punta Cana": "https://www.excellenceresorts.com/fileadmin/_processed_/csm_Excellence-Punta-Cana-1920x1025-Destination-Beach-Overview-01_8f841b9890.jpg"
+        }
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
@@ -125,8 +157,11 @@
             data: JSON.stringify(features),
             success: (result) => {
                 for (x in result) {
-                    $('#hotel_' + x).html(result[x]['hotel']);
+                    $('#city_' + x).html(result[x]['city'])
+                    $('#citypic').attr("src", pic_dict[result[x]['city']])
+                    $('#hotel_' + x).html("Suggested Hotel: " + result[x]['hotel']);
                     $('#review_' + x).html(quote_icon + result[x]['review']);
+                    $('#tripadvisor_' + x).html(review_script);
                 }
                 $('#result_div').show();
             },

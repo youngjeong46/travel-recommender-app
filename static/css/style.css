@@ -39,6 +39,11 @@ textarea {
     margin-bottom: 20px;
 }
 
+#tripadvisor_0, #tripadvisor_1, #tripadvisor_2 {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -112,3 +117,4 @@ textarea {
   color: white;
 }
 
+.unarticulated { text-decoration: none; color: #000080; font-style: italic; }

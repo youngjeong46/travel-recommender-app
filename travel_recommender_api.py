@@ -50,8 +50,9 @@ def suggest(description):
 
     }
     for i in range(len(idx)):
-        suggestions[str(i)] = {'hotel': pos.iloc[idx[i],
-                                                 :].hotel, 'review': pos.iloc[idx[i], :].content}
+        suggestions[str(i)] = {'hotel': pos.iloc[idx[i], :].hotel,
+                               'city': pos.iloc[idx[i], :].city,
+                               'review': pos.iloc[idx[i], :].content}
 
     print(suggestions)
 
