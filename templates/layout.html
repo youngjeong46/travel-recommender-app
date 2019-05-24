@@ -7,7 +7,6 @@
     <link rel="icon" href="{{ url_for('static', filename='sand-favicon.png') }}">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,6 +113,28 @@
 
 <script>
     $('#submit').click(() => { send_data(); });
+    function send_data() {
+        let features = $('#description').val()
+        let quote_icon = "<i class='fas fa-quote-left fa-2x fa-pull-left'></i>"
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "/",  // Replace with URL of POST handler
+            dataType: "json",
+            async: true,
+            data: JSON.stringify(features),
+            success: (result) => {
+                for (x in result) {
+                    $('#hotel_' + x).html(result[x]['hotel']);
+                    $('#review_' + x).html(quote_icon + result[x]['review']);
+                }
+                $('#result_div').show();
+            },
+            error: (result) => {
+                alert('There has been an error.');
+            }
+        })
+    }
 </script>
 
 </html>
